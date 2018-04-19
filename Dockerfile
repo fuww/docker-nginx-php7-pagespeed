@@ -1,11 +1,11 @@
 FROM ubuntu:latest
 
-RUN export BUILD_PACKAGES="curl wget ca-certificates unzip sudo build-essential zlib1g-dev libpcre3-dev uuid-dev" \
+RUN export BUILD_PACKAGES="curl wget unzip sudo build-essential zlib1g-dev libpcre3-dev uuid-dev" \
   && export SUDO_FORCE_REMOVE=yes \
   && export DEBIAN_FRONTEND=noninteractive \
   && export HEADERS_MORE_VERSION=0.33 \
   && apt-get -y update \
-  && apt-get -y --no-install-recommends install $BUILD_PACKAGES \
+  && apt-get -y --no-install-recommends install ca-certificates $BUILD_PACKAGES \
   && echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' > /etc/apt/sources.list.d/newrelic.list \
   && wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add - \
   && apt-get -y update \
