@@ -29,9 +29,10 @@ RUN export BUILD_PACKAGES="curl wget unzip sudo build-essential zlib1g-dev libpc
     php7.0-xsl \
     php7.0-recode \
     php-memcached \
+    php-redis \
     newrelic-php5 \
     supervisor \
-  && phpenmod -v mcrypt imap memcached \
+  && phpenmod -v mcrypt imap memcached redis \
   && sed -i \
         -e "s/;\?newrelic.enabled =.*/newrelic.enabled = \${NEW_RELIC_ENABLED}/" \
         -e "s/newrelic.license =.*/newrelic.license = \${NR_INSTALL_KEY}/" \
